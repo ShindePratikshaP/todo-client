@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [newTodo, setNewTodo] = useState('');
   
   const loadTodos = async () => {
     console.log('Loading todos...');
@@ -25,6 +26,17 @@ function App() {
           <h3>{todo}</h3>
         </div>
       ))}
+      <div className='todo-add-container'>
+        <input type='text' 
+          placeholder='Add todo'
+          className='input-todo'
+          value={newTodo}
+          onChange={(e) => {
+            setNewTodo(e.target.value);
+          }}/>
+          <button className='add-button' >Add Todo</button>
+      </div>
+
     </div>
   )
 }
