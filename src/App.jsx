@@ -14,8 +14,7 @@ function App() {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const loadTodos = async () => {
-    console.log('Loading todos...');
-
+    
     const response = await axios.get(`${BASE_URL}/todos`);
     setTodos(response.data.data);
   };
