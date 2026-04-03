@@ -11,7 +11,7 @@ function App() {
   const [oldtodo,setOldTodos] =useState("");
   const[editmode,setEditmode]= useState(false);
   
-  const BASE_URL = 'https://todo-server-9hg3.onrender.com';
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
 
   const loadTodos = async () => {
     console.log('Loading todos...');
