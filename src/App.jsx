@@ -17,7 +17,7 @@ function App() {
     console.log('Loading todos...');
 
     const response = await axios.get(`${BASE_URL}/todos`);
-    setTodos(response.data);
+    setTodos(response.data.data);
   };
 
   const addTodo = async () => {
@@ -28,7 +28,7 @@ function App() {
   };
 
   const editTodo = async () => {
-    const response = await axios.put(`${BASE_URL}/todos`, { oldtodo: oldtodo, newtodo: newTodo });
+    const response = await axios.put(`${BASE_URL}/todos`, { oldtodoitem: oldtodo, newtodoitem: newTodo });
     setNewTodo("");
     setEditmode(false);
     loadTodos();
@@ -47,9 +47,10 @@ function App() {
   return (
     <div>
       <h1>To-Do List</h1>
-      <p>{editmode ? 'Editing Todo' : 'Add todo'}</p>
+      <p className='sub-heading'>{editmode ? 'Editing Todo' : 'Add ToDo'}</p>
       <div className='todo-items-container'>
-      {todos.map((todo, index) => (
+      {todos.map((todo, index) => {
+        return(
         <div key={index} className="todo-card" >
           <h3>{todo}</h3>
           <div>
@@ -64,7 +65,8 @@ function App() {
                 }} />
           </div>
         </div>
-      ))}
+        )
+      })}
       </div>
       <div className='todo-add-container'>
         <input type='text' 
